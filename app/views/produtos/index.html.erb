@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+</head>
+<body>
+
+<%if flash[:notice] %>
+  <div class="alert alert-success" role="alert"><%= flash[:notice] %></div>
+<%end %>
+
+<div class="container">
+  <table id="example" class="table table-dark table-striped" style="width:100%">
+    <thead>
+
+    <tr>
+      <td>ID</td>
+      <td>Nome</td>
+      <td>Descrição</td>
+      <td>Preço</td>
+      <td>Quantidade</td>
+      <td>Marca</td>
+      <td>Imagem</td>
+      <td>Gerenciamento</td>
+    </tr>
+    </thead>
+    <tbody>
+
+    <%@produto.each do |produtos| %>
+      <tr>
+        <td><%=produtos.id %></td>
+        <td><%=produtos.nome %></td>
+        <td><%=produtos.descricao %></td>
+        <td>R$<%=produtos.preco %></td>
+        <td><%=produtos.quantidade %></td>
+        <td><%=produtos.marca %></td>
+        <td><%=produtos.imagem %></td>
+
+        <td>
+          <a href="#"> <img src="<%= asset_path('eye.png') %>" width="30px" height="30px"/></a>&emsp;&emsp;
+          <a href="#"> <img src="<%= asset_path('edit.png') %>" width="30px" height="30px"/></a>&emsp;&emsp;
+
+          <%= link_to image_tag('excluir.png', style:'width:30px;height:30px'), produtos, method: :delete, data: {confirm: "Excluir produto ?"} %>
+        </td>
+      </tr>
+    <%end%>
+    </tbody>
+  </table>
+</div>
+</body>
+
+</html>
