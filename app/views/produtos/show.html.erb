@@ -1,4 +1,22 @@
 <div class="campoProdutos">
   <h1><%= @produto.nome %></h1>
+  <p><%= @produto.descricao %></p>
+  <div class="row">
+    <div class="col-lg-6">
+      <%= image_tag @produto.imagem, class: "card-img-top" %>
+    </div>
+    <div class="col-lg-6">
 
+
+      <h2>CONTEUDO DA CAIXA</h2>
+      <p>
+        Mouse para jogos G502 X<br>
+        Capa do botão de DPI Shift<br>
+        Documentação do usuário<br>
+        Adesivo
+      </p>
+      <h6>R$<%= @produto.preco%></h6>
+      <button>Comprar Agora!</button>
+    </div>
+  </div>
 </div>

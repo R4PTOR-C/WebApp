@@ -16,30 +16,113 @@
  */
 @import "bootstrap";
 
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+@import 'bootstrap';
+
 
 html{
   height: 100%;
 }
+
 body{
   background-color: black;
   height: 100%;
+  overflow-x: hidden;
+
 }
+
 
 .campoProdutos{
   border-radius: 50px;
-  height: 100%;
+  height: auto;
   width: 90%;
-  background-color: white;
   position: relative;
+  background-color: white;
 
   left: 5%;
   right: 5%;
-  top: 10%;
+  top: 5%;
 }
 
 h1{
   position: relative;
   top: 5%;
-  left: 5%;
+  left: 10%;
   font-family: 'Blade Runner Movie Font', sans-serif;
+}
+
+.card-img-top {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.card {
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+
+  border-radius: 15px;
+
+  text-align: center;
+  font-family: 'Gobold Bold', sans-serif;
+}
+
+.buy{
+  text-align: center;
+  font-size: 24px;
+  color: #FFFFFF;
+  width: 100%;
+
+  border: 0;
+  outline: none;
+  cursor: pointer;
+
+  border-radius: 15px;
+  font-family: 'Blade Runner Movie Font', sans-serif;
+  background: black;
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+
+.card-link {
+  text-decoration: none;
+  color: black;
+}
+
+.card-link:hover {
+  text-decoration: none;
+  color: black;
+
 }

@@ -34,8 +34,13 @@
     <input type="number" name="produto[quantidade]" class="form-control"  id="formGroupExampleInput2" placeholder="0">
   </div>
   <div class="form-group">
-    <label for="formGroupExampleInput">Marca</label>
-    <input type="text" name="produto[marca]" class="form-control"  id="formGroupExampleInput" placeholder="Nome">
+    <label for="marca">Marca</label>
+    <select name="produto[marca]" class="form-select" id="marca">
+      <option value="LOGITECH">LOGITECH</option>
+      <option value="RAZER">RAZER</option>
+      <option value="RED DRAGON">RED DRAGON</option>
+      <!-- Adicione mais opções de marca conforme necessário -->
+    </select>
   </div>
   <div class="mb-3">
     <%= form.label :imagem, class:"form-label" %>

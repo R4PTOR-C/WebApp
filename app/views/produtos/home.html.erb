@@ -18,46 +18,8 @@
 
 </head>
 <style>
-    .container{
 
 
-    }
-
-    .campoProdutos{
-        border-radius: 50px;
-        height: auto;
-        width: 90%;
-        background-color: white;
-
-        left: 5%;
-        right: 5%;
-        top: 10%;
-    }
-
-    h1{
-        position: relative;
-        top: 5%;
-        left: 10%;
-        font-family: 'Blade Runner Movie Font', sans-serif;
-    }
-
-    .card-img-top {
-        width: 100%;
-        height: 300px; /* Defina a altura desejada para suas imagens */
-        object-fit: cover; /* Para ajustar a imagem ao tamanho definido */
-    }
-
-    .card {
-        /* Estilos padrão do card */
-        /* ... */
-        transition: transform 0.3s; /* Adiciona uma transição suave ao efeito hover */
-    }
-
-    .card:hover {
-        transform: scale(1.05); /* Aumenta um pouco o tamanho do card ao passar o mouse */
-        /* Outras alterações visuais que você deseja aplicar durante o hover */
-        /* ... */
-    }
 
 </style>
 
@@ -69,48 +31,52 @@
 
 
 
+  <br> <h1 style="font-family: 'Blade Runner Movie Font', sans-serif">DESTAQUES</h1>
+  <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel" >
+    <div class="carousel-inner">
 
-    <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <h1 style="font-family: 'Blade Runner Movie Font', sans-serif">DESTAQUES</h1>
-        <% @produto.each_slice(4).with_index do |produtos_slice, index| %>
-          <div class="carousel-item <%= 'active' if index == 0 %>">
+      <% @produto.each_slice(4).with_index do |produtos_slice, index| %>
+        <div class="carousel-item <%= 'active' if index == 0 %>">
 
-            <div class="container-sm">
+          <div class="container-sm">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
               <% produtos_slice.each do |produto| %>
+
                 <div class="col">
-                  <div class="card h-100">
-                    <% if produto.imagem.attached? %>
-                      <%= image_tag produto.imagem, class: "card-img-top" %>
-                    <% else %>
-                      <%= image_tag "mouse_pequeno.png", class: "card-img-top" %>
-                    <% end %>
-                    <div class="card-body">
-                      <%= link_to produto.nome, produto_path(produto), class: "card-title" %>
-                      <p class="card-text">DESCRIÇÃO</p>
-                      <p class="card-text">R$<%= produto.preco %></p>
+                  <%= link_to produto_path(produto), class: "card-link" do %>
+                    <div class="card h-100">
+                      <% if produto.imagem.attached? %>
+                        <%= image_tag produto.imagem, class: "card-img-top" %>
+                      <% else %>
+                        <%= image_tag "mouse_pequeno.png", class: "card-img-top" %>
+                      <% end %>
+                      <div class="card-body">
+                        <p class="card-title"><%=produto.nome %></p>
+                        <p class="card-text">DESCRIÇÃO</p>
+                        <p class="card-text">R$<%= produto.preco %></p>
+                        <button class="buy"> COMPRAR </button>
+                      </div>
                     </div>
-                  </div>
+                  <%end %>
                 </div>
               <% end %>
             </div>
 
-            </div>
-
           </div>
-        <% end %>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+
+        </div>
+      <% end %>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
 
 
   <br>
@@ -119,27 +85,31 @@
 
   <h1 style="font-family: 'Blade Runner Movie Font', sans-serif">LOGITECH</h1>
 
+
   <div class="container-sm">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
-      <% @produto.where(marca: 'Logitech').each do |produto| %> <!-- Substitua 'Marca Específica' pela marca que deseja filtrar -->
+      <% @produto.where(marca: 'LOGITECH').each do |produto| %>
         <div class="col">
-          <div class="card h-100">
-            <% if produto.imagem.attached? %>
-              <%= image_tag produto.imagem, class: "card-img-top" %>
-            <% else %>
-              <%= image_tag "mouse_pequeno.png", class: "card-img-top" %>
-            <% end %>
-            <div class="card-body">
-              <%= link_to produto.nome, produto_path(produto), class: "card-title" %>
-              <p class="card-text">DESCRIÇÃO</p>
-              <p class="card-text">R$<%= produto.preco %></p>
+          <%= link_to produto_path(produto), class: "card-link" do %>
+            <div class="card h-100">
+              <% if produto.imagem.attached? %>
+                <%= image_tag produto.imagem, class: "card-img-top" %>
+              <% else %>
+                <%= image_tag "mouse_pequeno.png", class: "card-img-top" %>
+              <% end %>
+              <div class="card-body">
+                <p class="card-title"><%=produto.nome %></p>
+                <p class="card-text">DESCRIÇÃO</p>
+                <p class="card-text">R$<%= produto.preco %></p>
+                <button class="buy"> COMPRAR </button>
+              </div>
             </div>
-          </div>
+          <%end %>
         </div>
       <% end %>
+
     </div>
   </div>
-
 
   <br>
 
