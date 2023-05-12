@@ -1,10 +1,10 @@
 databases:
-  - name: mysite
+  - name: postgres
     ipAllowList: []
 
 services:
   - type: web
-    name: mysite
+    name: WebAppRails
     env: ruby
     buildCommand: "./bin/render-build.sh"
     startCommand: bundle exec rails s
