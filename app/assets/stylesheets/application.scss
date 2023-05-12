@@ -33,6 +33,12 @@
  */
 @import 'bootstrap';
 
+@font-face {
+  font-family: 'future';
+  src: url(font-path('future.ttf')) format('truetype');
+  /* Outras propriedades da fonte, como weight e style, se necessário */
+}
+
 
 html{
   height: 100%;
@@ -62,7 +68,7 @@ h1{
   position: relative;
   top: 5%;
   left: 10%;
-  font-family: 'Blade Runner Movie Font', sans-serif;
+  font-family: 'future', sans-serif;
 }
 
 .card-img-top {
@@ -99,7 +105,7 @@ h1{
   cursor: pointer;
 
   border-radius: 15px;
-  font-family: 'Blade Runner Movie Font', sans-serif;
+  font-family: 'future', sans-serif;
   background: black;
 }
 
