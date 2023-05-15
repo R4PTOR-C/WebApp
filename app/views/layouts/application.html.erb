@@ -18,8 +18,7 @@
           left: 50%;
           margin-left: -50px !important;  /* 50% of your logo width */
           display: block;
-          top: 15px;
-
+          top: 10px;
       }
   </style>
   <body>
@@ -35,17 +34,21 @@
             <a class="nav-link active" aria-current="page" href="/new">Novo</a>
           </li>
           <li class="nav-item">
-            <%=link_to "Produtos", index_path,class:"nav-link" %>
+            <%=link_to "Produtos", index_path,class:"nav-link active" %>
           </li>
-
         </ul>
+
+
+        <!-- formulario de pesquisa
+
+        <form class="d-flex" role="search">
         <%= form_tag busca_produto_path, method: :get, class: "navbar-form" do %>
-          <form class="d-flex" role="search">
+
             <%= text_field_tag :nome, params[:nome], class: "form-control me-2" %>
-            <button class="btn btn-outline-success" type="submit">Search</button>
+            <button class="btn btn-outline-dark" type="submit">Search</button>
           </form>
         <% end %>
-
+         -->
 
 
 

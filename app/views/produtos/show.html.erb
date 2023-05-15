@@ -8,19 +8,22 @@
     <div class="col-md-6">
       <%= image_tag @produto.imagem, class: "card-img-top" %>
     </div>
-    <div class="col-md-6">
+    <div class=" flex-column col-md-6">
 
-
-      <h2>CONTEUDO DA CAIXA</h2>
+      <div style="text-align: center">
+      <h2 style="font-family: gobold">CONTEUDO DA CAIXA</h2>
       <p>
         Mouse para jogos G502 X<br>
         Capa do botão de DPI Shift<br>
         Documentação do usuário<br>
         Adesivo
       </p>
-      <h6>R$<%= @produto.preco%></h6>
-      <button class="buy">comprar agora!</button>
+      <p>R$<%= @produto.preco%></p>
+
+        <button class="buy">comprar agora!</button>
+      </div>
     </div>
   </div>
   </div>
+  <br>
 </div>
