@@ -1,11 +1,14 @@
 <div class="campoProdutos">
-  <h1><%= @produto.nome %></h1>
-  <p><%= @produto.descricao %></p>
+
+  <div class="container">
+  <br> <h1 ><%= @produto.nome %></h1>
+
+    <p><%= @produto.descricao %></p>
   <div class="row">
-    <div class="col-lg-6">
+    <div class="col-md-6">
       <%= image_tag @produto.imagem, class: "card-img-top" %>
     </div>
-    <div class="col-lg-6">
+    <div class="col-md-6">
 
 
       <h2>CONTEUDO DA CAIXA</h2>
@@ -16,7 +19,8 @@
         Adesivo
       </p>
       <h6>R$<%= @produto.preco%></h6>
-      <button>Comprar Agora!</button>
+      <button class="buy">comprar agora!</button>
     </div>
+  </div>
   </div>
 </div>
