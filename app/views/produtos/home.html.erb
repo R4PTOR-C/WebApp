@@ -11,11 +11,7 @@
 
 
 </head>
-<style>
 
-
-
-</style>
 
 <body>
 <div class="campoProdutos">
@@ -48,7 +44,7 @@
                       <% end %>
                       <div class="card-body">
                         <p class="card-text"><%=produto.nome %></p>
-                        <p class="card-text">DESCRIÇÃO</p>
+                        <p class="card-text"><%=produto.descricao %></p>
                         <p class="card-text">R$<%= produto.preco %></p>
                         <button class="buy">comprar</button>
                       </div>
@@ -95,7 +91,7 @@
               <% end %>
               <div class="card-body">
                 <p class="card-text"><%=produto.nome %></p>
-                <p class="card-text">DESCRIÇÃO</p>
+                <p class="card-text"><%=produto.descricao %></p>
                 <p class="card-text">R$<%= produto.preco %></p>
                 <button class="buy"> comprar </button>
               </div>

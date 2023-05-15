@@ -63,6 +63,10 @@ h1{
   color: black;
   font-family: 'future', sans-serif;
 }
+h2{
+  font-family: gobold;
+  color: black;
+}
 
 .card-img-top {
   max-width: 100%;
@@ -79,9 +83,9 @@ h1{
 }
 
 .card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
-  border-radius: 15px;
+
+  border-radius: 20px;
 
   text-align: center;
   font-family: 'Gobold Bold', sans-serif;
@@ -97,7 +101,7 @@ h1{
   outline: none;
   cursor: pointer;
 
-  border-radius: 15px;
+  border-radius: 20px;
   font-family: 'future', sans-serif;
   background: black;
 }
