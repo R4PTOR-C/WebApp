@@ -33,10 +33,10 @@
  */
 @import 'bootstrap';
 
-
 @font-face {
   font-family: 'future';
-  src: font_path('layout/fonts/future.ttf') format('truetype');
+  src: font_url('future.ttf') format('truetype');
+  /* Outras propriedades da fonte, como weight e style, se necessário */
 }
 
 
