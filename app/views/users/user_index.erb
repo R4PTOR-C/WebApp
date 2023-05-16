@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="table-responsive">
+    <table id="example" class="table table-dark table-striped">
+
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Email</th>
+
+      </tr>
+      </thead>
+
+      <tbody>
+      <% @user.each do |produtos| %>
+        <tr>
+          <td><%= produtos.id %></td>
+          <td><%= produtos.name %></td>
+          <td><%= produtos.email %></td>
+
+
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

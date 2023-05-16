@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
 
+  resources :users, only: [:create]
+
+  get "user_index", to: "users#user_index"
+  get "register", to: "users#register", as: :register
+
+  get "login", to: "users#login"
+
   resources :produtos, only: [:show]
 
   get "show", to: "produtos#show"
