@@ -32,7 +32,7 @@
   <%= form_tag add_to_wallet_user_path(@user), method: :post, class: "form" do %>
     <div class="mb-3">
       <%= label_tag :amount, 'Adicionar à carteira', class: "form-label" %>
-      <%= number_field_tag :amount, class: "form-control", inputmode: "numeric" %>
+      <%= number_field_tag :amount, class: "form-control", inputmode: "tel" %>
     </div>
     <%= submit_tag 'adicionar', class: "buy" %>
   <% end %>
