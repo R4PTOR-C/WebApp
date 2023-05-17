@@ -2,7 +2,7 @@
     .campoCarteira{
         background-color: #FAFAFA;
         width: 40%;
-        min-width: 390px;
+        min-width: 350px;
         height: auto;
         left: 50%;
         top: 25%;
@@ -16,7 +16,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 50vh;
+        height: 75vh;
+        top: 25%;
     }
 </style>
 
@@ -26,13 +27,17 @@
 
 
 
-  <p>Saldo atual: R$<%= @user.wallet_balance %></p>
+  <p>Saldo atual: R$<%= @user.wallet_balance.to_i %></p>
 
-  <%= form_tag  add_to_wallet_user_path(@user), method: :post do %>
-    <p><%= label_tag :amount, 'Adicionar a carteira' %></p>
-    <%= number_field_tag :amount %>
-    <%= submit_tag 'Add' %>
+  <%= form_tag add_to_wallet_user_path(@user), method: :post, class: "form" do %>
+    <div class="mb-3">
+      <%= label_tag :amount, 'Adicionar à carteira', class: "form-label" %>
+      <%= number_field_tag :amount, class: "form-control", inputmode: "numeric" %>
+    </div>
+    <%= submit_tag 'adicionar', class: "buy" %>
   <% end %>
+
+
 
 </div>
 

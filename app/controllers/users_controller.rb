@@ -54,7 +54,7 @@ class UsersController < ApplicationController
 
   def add_to_wallet
     @user = User.find(params[:id])
-    amount = params[:amount].to_f
+    amount = params[:amount].gsub(',', '.').to_f
 
     if amount.positive?
       @user.add_to_wallet(amount)
@@ -63,6 +63,7 @@ class UsersController < ApplicationController
       redirect_to user_path(@user), alert: 'Invalid amount'
     end
   end
+
 
   def deduct_from_wallet
     @user = User.find(params[:id])
