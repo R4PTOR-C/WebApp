@@ -2,6 +2,14 @@ Rails.application.routes.draw do
 
   delete "logout", to: "sessions#destroy", as: :logout
 
+  resources :users, only: [:create, :show] do
+    member do
+      post 'add_to_wallet'
+      post 'deduct_from_wallet'
+    end
+  end
+
+  get "carteira", to: "users#carteira"
 
   resources :users, only: [:create]
 
@@ -10,6 +18,8 @@ Rails.application.routes.draw do
 
   get "login", to: "users#login"
   post "authenticate", to: "users#authenticate"
+  delete "users/:id", to: "users#destroy", as: :delete_user
+
 
   resources :produtos, only: [:show]
 

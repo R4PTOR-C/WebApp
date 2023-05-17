@@ -8,22 +8,30 @@
         <th>Nome</th>
         <th>Email</th>
         <th>logged in</th>
+        <th>carteira</th>
+        <th>Gerenciamento</th>
 
       </tr>
       </thead>
 
       <tbody>
-      <% @user.each do |produtos| %>
+      <% @user.each do |user| %>
         <tr>
-          <td><%= produtos.id %></td>
-          <td><%= produtos.name %></td>
-          <td><%= produtos.email %></td>
-          <td><%=produtos.logged_in %></td>
-
-
+          <td><%= user.id %></td>
+          <td><%= user.name %></td>
+          <td><%= user.email %></td>
+          <td><%=user.logged_in %></td>
+          <td><%=user.wallet_balance%></td>
+          <td>
+            <a href="#"><img src="<%= asset_path('edit.png') %>" width="30px" height="30px" /></a>
+            &emsp;&emsp;
+            <%= link_to image_tag('excluir.png', style: 'width:30px;height:30px'), user, method: :delete, data: { confirm: "Excluir produto?" } %>
+          </td>
         </tr>
       <% end %>
       </tbody>
     </table>
+
+
   </div>
 </div>

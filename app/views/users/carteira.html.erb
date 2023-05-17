@@ -1,0 +1,21 @@
+<div class="campoProdutos">
+  <!-- app/views/users/show.html.erb -->
+  <h1>User Details</h1>
+
+
+
+
+  <!-- Formulário para adicionar valor à carteira -->
+  <%= form_tag  add_to_wallet_user_path(@user), method: :post do %>
+    <%= label_tag :amount, 'Add to Wallet' %>
+    <%= number_field_tag :amount %>
+    <%= submit_tag 'Add' %>
+  <% end %>
+
+  <!-- Formulário para retirar valor da carteira -->
+  <%= form_tag deduct_from_wallet_user_path(@user), method: :post do %>
+    <%= label_tag :amount, 'Deduct from Wallet' %>
+    <%= number_field_tag :amount %>
+    <%= submit_tag 'Deduct' %>
+  <% end %>
+</div>

@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   helper_method :current_user
 
+
+
   def current_user
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
@@ -48,9 +50,47 @@ class UsersController < ApplicationController
     end
   end
 
+  def add_to_wallet
+    @user = User.find(params[:id])
+    amount = params[:amount].to_f
+
+    if amount.positive?
+      @user.add_to_wallet(amount)
+      redirect_to user_path(@user), notice: 'Amount added to wallet successfully'
+    else
+      redirect_to user_path(@user), alert: 'Invalid amount'
+    end
+  end
+
+  def deduct_from_wallet
+    @user = User.find(params[:id])
+    amount = params[:amount].to_f
+
+    if amount.positive? && @user.wallet_balance >= amount
+      @user.deduct_from_wallet(amount)
+      redirect_to user_path(@user), notice: 'Amount deducted from wallet successfully'
+    else
+      redirect_to user_path(@user), alert: 'Insufficient balance or invalid amount'
+    end
+  end
+
+  def carteira
+    @user = current_user
+
+  end
+
+  def destroy
+    remove_id = params[:id]
+    User.destroy remove_id
+    redirect_to user_index_path
+  end
+
   private
 
   def user_params
     params.require(:user).permit(:name, :email)
   end
+
+
+
 end
