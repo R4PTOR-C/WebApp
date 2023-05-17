@@ -1,5 +1,32 @@
 class UsersController < ApplicationController
 
+  helper_method :current_user
+
+  def current_user
+    @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
+  end
+  def login
+    if current_user
+      flash.now[:notice] = "You are already logged in."
+    end
+  end
+
+
+  def authenticate
+    user = User.find_by(email: params[:email])
+
+    if user
+      user.update(logged_in: true) # Atualiza o status de login do usuário para true
+      session[:user_id] = user.id
+      redirect_to root_path, notice: "Logged in successfully"
+    else
+      flash.now[:alert] = "Invalid email"
+      render :login
+    end
+  end
+
+
+
 
   def user_index
     @user = User.all
@@ -26,5 +53,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:name, :email)
   end
-
 end

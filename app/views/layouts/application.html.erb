@@ -24,7 +24,7 @@
   <body>
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <%=link_to 'Thunder', root_url, style:"font-family: 'future', sans-serif;", class:"navbar-brand"%>
+      <%= link_to 'Thunder', root_url, style: "font-family: 'future', sans-serif;", class: "navbar-brand" %>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -34,31 +34,30 @@
             <a class="nav-link active" aria-current="page" href="/new">Novo</a>
           </li>
           <li class="nav-item">
-            <%=link_to "Produtos", index_path,class:"nav-link active" %>
+            <%= link_to "Produtos", index_path, class: "nav-link active" %>
           </li>
-          <li class="nav-item">
-            <%=link_to "Login", login_path ,class:"nav-link active" %>
-          </li>
+
+
+          <% if current_user %>
+            <li class="nav-item">
+
+              <%= link_to "Logout", logout_path, method: :delete, class: "nav-link active" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <%= link_to "Login", login_path, class: "nav-link active" %>
+            </li>
+          <% end %>
+
         </ul>
-
-
-        <!-- formulario de pesquisa
-
-        <form class="d-flex" role="search">
-        <%= form_tag busca_produto_path, method: :get, class: "navbar-form" do %>
-
-            <%= text_field_tag :nome, params[:nome], class: "form-control me-2" %>
-            <button class="btn btn-outline-dark" type="submit">Search</button>
-          </form>
+        <% if current_user %>
+        <p>Welcome, <%= current_user.name %>. You are logged in.</p>
+        <% else %>
         <% end %>
-         -->
-
-
-
-
       </div>
     </div>
   </nav>
+
 
   <%= yield %>
   </body>

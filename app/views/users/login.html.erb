@@ -28,14 +28,23 @@
 
 <div class="container">
 <div class="campoLogin">
+
+  <% if current_user %>
+    <p>Welcome, <%= current_user.name %>. You are logged in.</p>
+  <% else %>
+    <p>Welcome, Guest. Please log in.</p>
+  <% end %>
+
   <h1>
     fazer login
   </h1>
 
+  <%= form_tag authenticate_path do %>
   <form>
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <%= label_tag :email%>
+      <%= email_field_tag :email%>
+
       <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
     </div>
    <!-- <div class="mb-3">
@@ -43,11 +52,11 @@
       <input type="password" class="form-control" id="exampleInputPassword1">
     </div>-->
 
-
     <div class="text-center">
       <p>Não é um membro ? <%=link_to'Registre-se',register_path %></p>
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
   </form>
+  <% end %>
 </div>
 </div>
