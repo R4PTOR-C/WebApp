@@ -15,10 +15,12 @@ class UsersController < ApplicationController
 
 
   def authenticate
-    user = User.find_by(email: params[:email])
+    email = params[:email].downcase # Converter o e-mail para letras minúsculas
+
+    user = User.find_by(email: email)
 
     if user
-      user.update(logged_in: true) # Atualiza o status de login do usuário para true
+      user.update(logged_in: true)
       session[:user_id] = user.id
       redirect_to root_path, notice: "Logged in successfully"
     else

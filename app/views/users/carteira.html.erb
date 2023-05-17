@@ -1,21 +1,39 @@
-<div class="campoProdutos">
-  <!-- app/views/users/show.html.erb -->
-  <h1>User Details</h1>
+<style>
+    .campoCarteira{
+        background-color: #FAFAFA;
+        width: 40%;
+        min-width: 390px;
+        height: auto;
+        left: 50%;
+        top: 25%;
+        padding: 20px 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        margin: 10px;
+    }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50vh;
+    }
+</style>
+
+<div class="container">
+<div class="campoCarteira">
+  <h1>carteira</h1>
 
 
 
+  <p>Saldo atual: R$<%= @user.wallet_balance %></p>
 
-  <!-- Formulário para adicionar valor à carteira -->
   <%= form_tag  add_to_wallet_user_path(@user), method: :post do %>
-    <%= label_tag :amount, 'Add to Wallet' %>
+    <p><%= label_tag :amount, 'Adicionar a carteira' %></p>
     <%= number_field_tag :amount %>
     <%= submit_tag 'Add' %>
   <% end %>
 
-  <!-- Formulário para retirar valor da carteira -->
-  <%= form_tag deduct_from_wallet_user_path(@user), method: :post do %>
-    <%= label_tag :amount, 'Deduct from Wallet' %>
-    <%= number_field_tag :amount %>
-    <%= submit_tag 'Deduct' %>
-  <% end %>
+</div>
+
 </div>
