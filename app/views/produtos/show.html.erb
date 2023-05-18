@@ -20,7 +20,12 @@
       </p>
       <p>R$<%= @produto.preco%></p>
 
-        <%= button_to 'Adicionar ao Carrinho', add_to_cart_user_path(current_user, @produto), method: :post %>
+        <% if current_user %>
+          <%= button_to 'Adicionar ao Carrinho', add_to_cart_user_path(current_user, @produto), method: :post, class:"buy"%>
+        <% else %>
+          <p>Faça login para adicionar produtos ao carrinho.</p>
+          <%= link_to 'Login', login_path, class: 'btn btn-primary' %>
+        <% end %>
 
 
 
