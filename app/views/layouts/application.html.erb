@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br">
   <head>
-    <title>WebApp</title>
+    <title>Thunder</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link rel="shortcut icon" type="image/x-icon" href="<%= asset_path('shortcut.png') %>">
+
   </head>
   <style>
       .navbar {
