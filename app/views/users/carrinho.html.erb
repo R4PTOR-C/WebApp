@@ -1,17 +1,43 @@
 <div class="container">
   <div class="campoProdutos">
-  <h1>Carrinho de Compras</h1>
-  <% @produtos.each do |produto| %>
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title"><%= produto.nome %></h5>
-        <p class="card-text"><%= produto.descricao %></p>
-        <p class="card-text">R$ <%= produto.preco %></p>
-        <%= button_to 'Remover do Carrinho', remover_do_carrinho_user_path(@user, produto_id: produto.id), method: :delete, class: 'btn btn-danger' %>
-      </div>
-    </div>
-    <br>
-  <% end %>
-  </div>
+    <h1>Carrinho de Compras</h1>
+    <p>Saldo atual: R$<%= @user.wallet_balance.to_i %></p>
+    <p>Total: R$<%= @produtos.sum(&:preco) %></p>
 
+    <% @produtos.each do |produto| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= produto.nome %></h5>
+          <p class="card-text"><%= produto.descricao %></p>
+          <p class="card-text">R$ <%= produto.preco %></p>
+          <%= button_to 'Remover do Carrinho', remover_do_carrinho_user_path(@user, produto_id: produto.id), method: :delete, class: 'btn btn-danger' %>
+        </div>
+      </div>
+      <br>
+    <% end %>
+
+    <% if @user.wallet_balance.to_i >= @produtos.sum(&:preco) %>
+      <%= form_with url: deduct_from_wallet_user_path(@user), method: :post, id: 'deduct-form' do |form| %>
+        <%= form.hidden_field :amount, value: @produtos.sum(&:preco) %>
+        <%= form.submit 'realizar Compra', class: 'buy', onclick: 'simularCompra(event)' %>
+      <% end %>
+    <% else %>
+      <p>Saldo insuficiente. Deseja adicionar mais ? <%= link_to 'carteira', carteira_path, class: 'buy' %></p>
+
+    <% end %>
+  </div>
 </div>
+
+<script>
+    function simularCompra(event) {
+        event.preventDefault(); // Impede o envio do formulário
+
+        if (confirm('Deseja realmente simular a compra?')) {
+            // Simulação de compra bem-sucedida
+            alert('Compra simulada com sucesso!');
+
+            // Enviar o formulário para realizar a dedução do valor da carteira
+            document.getElementById('deduct-form').submit();
+        }
+    }
+</script>

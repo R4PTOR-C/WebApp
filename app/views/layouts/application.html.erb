@@ -48,6 +48,9 @@
               <%= link_to "Carteira", carteira_path, class: "nav-link active" %>
             </li>
             <li class="nav-item">
+              <%= link_to "Carrinho", carrinho_path, class: "nav-link active" %>
+            </li>
+            <li class="nav-item">
               <%= link_to "Logout", logout_path, method: :delete, data: { confirm: 'Tem certeza de que deseja fazer logout?',  class: 'btn btn-danger' }, class: "nav-link active" %>
             </li>
           <% else %>

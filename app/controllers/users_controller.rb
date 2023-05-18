@@ -70,9 +70,9 @@ class UsersController < ApplicationController
 
     if amount.positive? && @user.wallet_balance >= amount
       @user.deduct_from_wallet(amount)
-      redirect_to user_path(@user), notice: 'Amount deducted from wallet successfully'
+      redirect_to carrinho_path
     else
-      redirect_to user_path(@user), alert: 'Insufficient balance or invalid amount'
+      redirect_to carrinho_path
     end
   end
 
