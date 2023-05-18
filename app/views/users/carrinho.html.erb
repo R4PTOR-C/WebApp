@@ -1,10 +1,5 @@
 <style>
 
-  .card-img-side{
-      max-width: 100%;
-      height: 100%;
-      object-fit: cover;
-  }
 
   .container{
       top: 5%;
@@ -24,22 +19,18 @@
       <div class="card">
         <div class="card-body">
           <%= link_to produto_path(produto), class: "card-link" do %>
-          <div class="row align-items-center">
-
-
-
-
-            <div class="col">
-              <%= image_tag produto.imagem, class: "card-img-side" %>
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                  <%= image_tag produto.imagem, class: "card-img-top" %>
+                </div>
+              <div class=" flex-column col-md-6">
+                <div style="text-align: center">
+                  <p class="h2"><%=produto.nome %></p>
+                  <p><%=produto.descricao%></p>
+                  <p>R$<%= produto.preco%></p>
+                </div>
+              </div>
             </div>
-
-          <div class="col">
-                    <p class="h2"><%= produto.nome %></p>
-                    <p class="card-text"><%= produto.descricao %></p>
-                    <p class="card-text">R$ <%= produto.preco %></p>
-          </div>
-
-          </div>
           <% end %>
         <%= button_to 'Remover do Carrinho', remover_do_carrinho_user_path(@user, produto_id: produto.id), method: :delete, class: 'btn btn-danger' ,style:"font-family: gobold"%>
 
@@ -52,7 +43,7 @@
       <% if @user.wallet_balance.to_i >= @produtos.sum(&:preco) %>
         <%= form_with url: deduct_from_wallet_user_path(@user), method: :post, id: 'deduct-form' do |form| %>
           <%= form.hidden_field :amount, value: @produtos.sum(&:preco) %>
-          <%= form.submit 'realizar Compra', class: 'buy', onclick: 'simularCompra(event)' %>
+          <%= form.submit 'realizar Compra', class: 'buy', onclick: 'realizarCompra(event)' %>
         <% end %>
       <% else %>
         <p style="font-size: small">Saldo insuficiente. Deseja adicionar mais ? <%= link_to 'carteira', carteira_path, class: 'h1' %></p>
@@ -68,12 +59,13 @@
     function realizarCompra(event) {
         event.preventDefault(); // Impede o envio do formulário
 
-        if (confirm('Deseja realizar a compra?')) {
+        if (confirm('Deseja realmente simular a compra?')) {
             // Simulação de compra bem-sucedida
-            alert('Compra ralizada com sucesso!');
+            alert('Compra simulada com sucesso!');
 
-            // Enviar o formulário para remover o valor da carteira
+            // Enviar o formulário para realizar a dedução do valor da carteira
             document.getElementById('deduct-form').submit();
         }
     }
 </script>
+
