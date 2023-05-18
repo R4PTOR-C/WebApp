@@ -34,14 +34,14 @@
             </div>
 
           <div class="col">
-                    <h2><%= produto.nome %></h2>
+                    <p class="h2"><%= produto.nome %></p>
                     <p class="card-text"><%= produto.descricao %></p>
                     <p class="card-text">R$ <%= produto.preco %></p>
           </div>
 
           </div>
           <% end %>
-        <%= button_to 'Remover do Carrinho', remover_do_carrinho_user_path(@user, produto_id: produto.id), method: :delete, class: 'btn btn-danger' %>
+        <%= button_to 'Remover do Carrinho', remover_do_carrinho_user_path(@user, produto_id: produto.id), method: :delete, class: 'btn btn-danger' ,style:"font-family: gobold"%>
 
         </div>
 
