@@ -47,4 +47,11 @@ class ProdutosController < ApplicationController
   def home
     @produto = Produto.all
   end
+
+  def adicionar_ao_carrinho
+    @produto = Produto.find(params[:produto_id])
+    current_user.produtos_carrinho << @produto # Altere para a relação correta entre usuários e produtos no seu modelo
+    redirect_to carrinho_path, notice: 'Produto adicionado ao carrinho com sucesso.'
+  end
+
 end

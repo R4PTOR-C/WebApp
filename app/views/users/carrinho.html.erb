@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="campoProdutos">
+  <h1>Carrinho de Compras</h1>
+  <% @produtos.each do |produto| %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= produto.nome %></h5>
+        <p class="card-text"><%= produto.descricao %></p>
+        <p class="card-text">R$ <%= produto.preco %></p>
+        <%= button_to 'Remover do Carrinho', remover_do_carrinho_user_path(@user, produto_id: produto.id), method: :delete, class: 'btn btn-danger' %>
+      </div>
+    </div>
+    <br>
+  <% end %>
+  </div>
+
+</div>

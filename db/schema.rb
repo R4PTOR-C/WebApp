@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_17_113627) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_18_111404) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_17_113627) do
     t.datetime "updated_at", null: false
     t.string "image"
     t.string "marca"
+  end
+
+  create_table "produtos_users", id: false, force: :cascade do |t|
+    t.bigint "produto_id"
+    t.bigint "user_id"
+    t.index ["produto_id", "user_id"], name: "index_produtos_users_on_produto_id_and_user_id", unique: true
+    t.index ["produto_id"], name: "index_produtos_users_on_produto_id"
+    t.index ["user_id", "produto_id"], name: "index_produtos_users_on_user_id_and_produto_id", unique: true
+    t.index ["user_id"], name: "index_produtos_users_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

@@ -20,7 +20,10 @@
       </p>
       <p>R$<%= @produto.preco%></p>
 
-        <button class="buy">comprar agora!</button>
+        <%= button_to 'Adicionar ao Carrinho', add_to_cart_user_path(current_user, @produto), method: :post %>
+
+
+
       </div>
     </div>
   </div>

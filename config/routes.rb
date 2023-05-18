@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  resources :users, only: [:create] do
+    member do
+      post 'add_to_cart/:produto_id', to: 'users#add_to_cart', as: 'add_to_cart'
+      delete 'remover_do_carrinho/:produto_id', to: 'users#remover_do_carrinho', as: 'remover_do_carrinho'
+    end
+
+  end
+
+  get 'carrinho', to: 'users#carrinho'
+
   delete "logout", to: "sessions#destroy", as: :logout
 
   resources :users, only: [:create, :show] do

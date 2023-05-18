@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   before_create :initialize_wallet_balance
-
+  has_and_belongs_to_many :produtos
   def add_to_wallet(amount)
     self.wallet_balance += amount
     save

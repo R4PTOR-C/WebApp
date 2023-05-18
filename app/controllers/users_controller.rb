@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   helper_method :current_user
 
 
-
   def current_user
     @current_user ||= User.find_by(id: session[:user_id]) if session[:user_id]
   end
@@ -87,6 +86,39 @@ class UsersController < ApplicationController
     User.destroy remove_id
     redirect_to user_index_path
   end
+
+  def add_to_cart
+    @user = current_user
+    @produto = Produto.find(params[:produto_id])
+
+    # Verifique se o produto já está no carrinho do usuário
+    if @user.produtos.include?(@produto)
+      flash[:alert] = 'O produto já está no carrinho'
+    else
+      # Adicione o produto ao carrinho do usuário
+      @user.produtos << @produto
+      flash[:notice] = 'Produto adicionado ao carrinho com sucesso'
+    end
+
+    redirect_to carrinho_path
+  end
+
+  def carrinho
+    @user = current_user
+    @produtos = @user.produtos
+  end
+
+  def remover_do_carrinho
+    @user = current_user
+    @produto = Produto.find(params[:produto_id])
+
+    # Remova o produto do carrinho do usuário
+    @user.produtos.delete(@produto)
+
+    flash[:notice] = 'Produto removido do carrinho com sucesso'
+    redirect_to carrinho_path
+  end
+
 
   private
 
