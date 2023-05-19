@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   resources :produtos, only: [:show, :index, :create, :destroy]
   get 'produtos/busca', to: 'produtos#busca', as: :busca_produto
   get 'new', to: 'produtos#new'
-  get 'produtos', to: 'produtos#index', as: :index
+  get 'index', to: 'produtos#index'
 
   # Rota de logout
   delete 'logout', to: 'sessions#destroy', as: :logout

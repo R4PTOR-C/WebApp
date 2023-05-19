@@ -25,19 +25,15 @@
 <div class="campoCarteira">
   <h1>carteira</h1>
 
-
-
   <p>Saldo atual: R$<%= @user.wallet_balance.to_i %></p>
 
   <%= form_tag add_to_wallet_user_path(@user), method: :post, class: "form" do %>
     <div class="mb-3">
-      <%= label_tag :amount, 'Adicionar à carteira', class: "form-label" %>
+      <p><%= label_tag :amount, 'Adicionar à carteira', class: "form-label" %></p>
       <%= number_field_tag :amount, class: "form-control", inputmode: "tel" %>
     </div>
     <%= submit_tag 'adicionar', class: "buy" %>
   <% end %>
-
-
 
 </div>
 

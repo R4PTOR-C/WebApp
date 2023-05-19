@@ -14,7 +14,7 @@ class ProdutosController < ApplicationController
     @produto = Produto.new valores
     if @produto.save
       flash[:notice] = "produto salvo com sucesso"
-    redirect_to root_url
+      render :new
     else
       flash[:error] = "produto não foi salvo"
       render :new
@@ -26,7 +26,7 @@ class ProdutosController < ApplicationController
   def destroy
     remove_id = params[:id]
     Produto.destroy remove_id
-    redirect_to root_url
+    redirect_to produtos_path
   end
 
   def busca
