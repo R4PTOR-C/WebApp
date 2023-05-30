@@ -26,7 +26,7 @@
         Conteudo<br>
         Conteudo<br>
       </p>
-      <p>R$<%= @produto.preco%></p>
+      <p>R$<%= @produto.preco.to_i%></p>
 
         <% if current_user %>
           <%= button_to 'adicionar ao Carrinho', add_to_cart_user_path(current_user, @produto), method: :post, class:"buy"%>
