@@ -70,6 +70,7 @@ class UsersController < ApplicationController
 
     if amount.positive? && @user.wallet_balance >= amount
       @user.deduct_from_wallet(amount)
+      @user.produtos.clear # Remove todos os produtos do carrinho
       redirect_to carrinho_path
     else
       redirect_to carrinho_path

@@ -45,7 +45,7 @@
                       <div class="card-body">
                         <p class="card-text"><%=produto.nome %></p>
                         <p class="card-text"><%=produto.descricao %></p>
-                        <p class="card-text">R$<%= produto.preco %></p>
+                        <p class="card-text">R$<%= produto.preco.to_i %></p>
                         <button class="buy">comprar</button>
                       </div>
                     </div>
@@ -92,7 +92,7 @@
               <div class="card-body">
                 <p class="card-text"><%=produto.nome %></p>
                 <p class="card-text"><%=produto.descricao %></p>
-                <p class="card-text">R$<%= produto.preco %></p>
+                <p class="card-text">R$<%= produto.preco.to_i %></p>
                 <button class="buy"> comprar </button>
               </div>
             </div>

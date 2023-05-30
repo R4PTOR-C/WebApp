@@ -36,7 +36,7 @@
           <div class="col">
                     <p class="h2"><%= produto.nome %></p>
                     <p class="card-text"><%= produto.descricao %></p>
-                    <p class="card-text">R$ <%= produto.preco %></p>
+                    <p class="card-text">R$ <%= produto.preco.to_i %></p>
           </div>
 
           </div>
@@ -52,7 +52,7 @@
       <% if @user.wallet_balance.to_i >= @produtos.sum(&:preco) %>
         <%= form_with url: deduct_from_wallet_user_path(@user), method: :post, id: 'deduct-form' do |form| %>
           <%= form.hidden_field :amount, value: @produtos.sum(&:preco) %>
-          <%= form.submit 'realizar Compra', class: 'buy', onclick: 'simularCompra(event)' %>
+          <%= form.submit 'realizar Compra', class: 'buy', onclick: 'realizarCompra(event)' %>
         <% end %>
       <% else %>
         <p style="font-size: small">Saldo insuficiente. Deseja adicionar mais ? <%= link_to 'carteira', carteira_path, class: 'h1' %></p>
