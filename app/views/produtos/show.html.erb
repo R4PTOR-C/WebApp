@@ -20,12 +20,9 @@
 
       <div style="text-align: center">
       <p class="h2">CONTEUDO DA CAIXA</p>
-      <p>
-        Conteudo<br>
-        Conteudo<br>
-        Conteudo<br>
-        Conteudo<br>
-      </p>
+        <p>
+          <%= raw @produto.formatted_conteudo_caixa%>
+        </p>
       <p>R$<%= @produto.preco.to_i%></p>
 
         <% if current_user %>

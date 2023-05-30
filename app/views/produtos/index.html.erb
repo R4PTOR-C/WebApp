@@ -20,6 +20,7 @@
         <th>Preço</th>
         <th>Quantidade</th>
         <th>Marca</th>
+        <th>Conteudo</th>
         <th>Gerenciamento</th>
       </tr>
       </thead>
@@ -33,6 +34,7 @@
           <td>R$ <%= produtos.preco %></td>
           <td><%= produtos.quantidade %></td>
           <td><%= produtos.marca %></td>
+          <td><%= produtos.content %></td>
           <td>
             <a href="#"><img src="<%= asset_path('edit.png') %>" width="30px" height="30px" /></a>
             &emsp;&emsp;
