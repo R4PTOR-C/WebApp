@@ -1,8 +1,8 @@
 <style>
 
   .card-img-side{
-      max-width: 100%;
-      height: 100%;
+      max-width: 50%;
+      height: 50%;
       object-fit: cover;
   }
 
@@ -14,6 +14,7 @@
 
   <div class="campoProdutos">
     <div class="container">
+
       <br>
     <h1>Carrinho de Compras</h1>
     <p>Saldo atual: R$<%= @user.wallet_balance.to_i %></p>
@@ -30,14 +31,13 @@
 
 
             <div class="col">
+              <p class="h2"><%= produto.nome %></p>
+              <p class="card-text"><%= produto.descricao %></p>
+              <p class="h2">R$ <%= produto.preco.to_i %></p>
               <%= image_tag produto.imagem, class: "card-img-side" %>
+
             </div>
 
-          <div class="col">
-                    <p class="h2"><%= produto.nome %></p>
-                    <p class="card-text"><%= produto.descricao %></p>
-                    <p class="card-text">R$ <%= produto.preco.to_i %></p>
-          </div>
 
           </div>
           <% end %>
@@ -70,7 +70,7 @@
 
         if (confirm('Deseja realizar a compra?')) {
             // Simulação de compra bem-sucedida
-            alert('Compra ralizada com sucesso!');
+            alert('Compra realizada com sucesso!');
 
             // Enviar o formulário para remover o valor da carteira
             document.getElementById('deduct-form').submit();
